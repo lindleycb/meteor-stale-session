@@ -5,8 +5,8 @@
 // - staleSessionInactivityTimeout: the amount of time (in ms) after which, if no activity is noticed, a session will be considered stale
 // - staleSessionPurgeInterval: interval (in ms) at which stale sessions are purged i.e. found and forcibly logged out
 //
-var staleSessionPurgeInterval = Meteor.settings.public.staleSessionPurgeInterval || (1*60*1000); // 1min
-var inactivityTimeout = Meteor.settings.public.staleSessionInactivityTimeout || (30*60*1000); // 30mins
+var staleSessionPurgeInterval = Meteor.settings.public && Meteor.settings.public.staleSessionPurgeInterval || (1*60*1000); // 1min
+var inactivityTimeout = Meteor.settings.public && Meteor.settings.public.staleSessionInactivityTimeout || (30*60*1000); // 30mins
 
 //
 // provide a user activity heartbeat method which stamps the user record with a timestamp of the last

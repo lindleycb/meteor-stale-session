@@ -28,7 +28,7 @@ Meteor.methods({
 //
 Meteor.setInterval(function() {
     var now = new Date(), overdueTimestamp = new Date(now-inactivityTimeout);
-    Meteor.users.update({heartbeat: {$lt: overdueTimestamp}},
+    Meteor.users.update({heartbeat: {$lt: overdueTimestamp.getTime()}},
                         {$set: {'services.resume.loginTokens': []},
                          $unset: {heartbeat:1}},
                         {multi: true});

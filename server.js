@@ -17,7 +17,7 @@ Meteor.methods({
         if (!this.userId) { return; }
         var user = Meteor.users.findOne(this.userId);
         if (user) {
-            Meteor.users.update(user._id, {$set: {heartbeat: Date.now()}});
+            Meteor.users.update(user._id, {$set: {heartbeat: new Date()}});
         }
     }
 });

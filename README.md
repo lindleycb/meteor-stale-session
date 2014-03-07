@@ -33,6 +33,21 @@ Configuration is via `Meteor.settings.public`.
 - `staleSessionHeartbeatInterval` - interval (in ms) at which activity heartbeats are sent up to the server - default every 3 minutes.
 - `staleSessionActivityEvents` - the jquery events which are considered indicator of activity e.g. in an on() call - default `mousemove click keydown`
 
+You can set these variables in `config/settings.json` and then launch Meteor with `meteor --settings config/settings.json`.
+
+Example `config/settings.json` file:
+
+```json
+{
+  "public": {
+    "staleSessionInactivityTimeout": "1800000",
+    "staleSessionHeartbeatInterval": "180000",
+    "staleSessionPurgeInterval": "60000",
+    "staleSessionActivityEvents": "mousemove click keydown"
+  }
+}
+```
+
 
 ## Background
 

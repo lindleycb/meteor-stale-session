@@ -11,20 +11,21 @@ var activityEvents = Meteor.settings && Meteor.settings.public && Meteor.setting
 
 var activityDetected = false;
 
-//
-// periodically send a heartbeat if activity has been detected within the interval
-//
-Meteor.setInterval(function() {
-    if (Meteor.userId() && activityDetected) {
-        Meteor.call('heartbeat');
-        activityDetected = false;
-    }
-}, heartbeatInterval);
-
-//
-// detect activity and mark it as detected on any of the following events
-//
 Meteor.startup(function() {
+
+    //
+    // periodically send a heartbeat if activity has been detected within the interval
+    //
+    Meteor.setInterval(function() {
+        if (Meteor.userId() && activityDetected) {
+            Meteor.call('heartbeat');
+            activityDetected = false;
+        }
+    }, heartbeatInterval);
+
+    //
+    // detect activity and mark it as detected on any of the following events
+    //
     $('body').on(activityEvents, function() {
        activityDetected = true;
     });

@@ -40,9 +40,9 @@ Example `config/settings.json` file:
 ```json
 {
   "public": {
-    "staleSessionInactivityTimeout": "1800000",
-    "staleSessionHeartbeatInterval": "180000",
-    "staleSessionPurgeInterval": "60000",
+    "staleSessionInactivityTimeout": 1800000,
+    "staleSessionHeartbeatInterval": 180000,
+    "staleSessionPurgeInterval": 60000,
     "staleSessionActivityEvents": "mousemove click keydown"
   }
 }

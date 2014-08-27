@@ -6,6 +6,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
+    api.versionsFrom('METEOR-CORE@0.9.0');
     api.use('accounts-base', ['client','server']);
     api.use('jquery', 'client');
     api.addFiles('client.js', 'client');

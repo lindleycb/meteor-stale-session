@@ -1,10 +1,13 @@
 Package.describe({
-    'summary': 'Stale session and session timeout handling for meteorjs'
+  name:    'zuuk:stale-session',
+  summary: 'Stale session and session timeout handling for meteorjs',
+  git:     "https://github.com/lindleycb/meteor-stale-session.git",
+  version: "1.0.5"
 });
 
-Package.on_use(function(api) {
+Package.onUse(function(api) {
     api.use('accounts-base', ['client','server']);
     api.use('jquery', 'client');
-    api.add_files('client.js', 'client');
-    api.add_files('server.js', 'server');
+    api.addFiles('client.js', 'client');
+    api.addFiles('server.js', 'server');
 });

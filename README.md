@@ -1,4 +1,4 @@
-# meteor-stale-session
+# zuuk:stale-session
 
 Stale session and session timeout handling for [meteorjs](http://www.meteor.com/).
 

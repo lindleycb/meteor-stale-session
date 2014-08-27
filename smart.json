@@ -1,8 +1,0 @@
-{
-    "name": "stale-session",
-    "description": "Stale session and session timeout handling for meteorjs",
-    "homepage": "https://github.com/lindleycb/meteor-stale-session",
-    "git": "https://github.com/lindleycb/meteor-stale-session.git",
-    "author": "Chris Lindley (http://www.zuuk.com)",
-    "version": "1.0.4"
-}

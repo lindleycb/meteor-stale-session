@@ -5,7 +5,7 @@ Stale session and session timeout handling for [meteorjs](http://www.meteor.com/
 ## Quick Start
 
 ```sh
-$ mrt add stale-session
+$ meteor add zuuk:stale-session
 ```
 
 ## Key Concepts

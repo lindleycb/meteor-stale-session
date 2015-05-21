@@ -31,7 +31,7 @@ Configuration is via `Meteor.settings.public`.
 - `staleSessionInactivityTimeout` - the amount of time (in ms) after which, if no activity is noticed, a session will be considered stale - default 30 minutes.
 - `staleSessionPurgeInterval` - interval (in ms) at which stale sessions are purged i.e. found and forcibly logged out - default 1 minute.
 - `staleSessionHeartbeatInterval` - interval (in ms) at which activity heartbeats are sent up to the server - default every 3 minutes.
-- `staleSessionActivityEvents` - the jquery events which are considered indicator of activity e.g. in an on() call - default `mousemove click keydown`
+- `staleSessionActivityEvents` - the jquery events which are considered indicator of activity e.g. in an on() call - default `mousemove click keydown` (NOTE: add "touchstart" and "touchend" to also detect activity on a mobile touchscreen)
 
 You can set these variables in `config/settings.json` and then launch Meteor with `meteor --settings config/settings.json`.
 
@@ -43,7 +43,7 @@ Example `config/settings.json` file:
     "staleSessionInactivityTimeout": 1800000,
     "staleSessionHeartbeatInterval": 180000,
     "staleSessionPurgeInterval": 60000,
-    "staleSessionActivityEvents": "mousemove click keydown"
+    "staleSessionActivityEvents": "mousemove click keydown touchstart touchend"
   }
 }
 ```

@@ -37,16 +37,6 @@ Meteor.methods({
 //
 var self = this;
 Meteor.setInterval(function() {
-    //var user = Meteor.users.findOne(userID);
-    console.log("test");
-    //var roles = user.roles;
-    //for (var x = 0, count = roles.length; x < count; x++){
-    //    for(var y = 0, count1 = usersRoles.length; y < count1; y++) {
-    //        if (roles[x] === usersRoles[y]) {
-    //            return
-    //        }
-    //    }
-    //}
     var now = new Date(), overdueTimestamp = new Date(now-inactivityTimeout);
     Meteor.users.update({heartbeat: {$lt: overdueTimestamp}},
                         {$set: {'services.resume.loginTokens': []},

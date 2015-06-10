@@ -7,7 +7,7 @@
 //
 var staleSessionPurgeInterval = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionPurgeInterval || (1*60*1000); // 1min
 var inactivityTimeout = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionInactivityTimeout || (30*60*1000); // 30mins
-var usersRoles = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionUserRoles || []; // null
+var usersRoles = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionUserRoles || null; // null
 //
 // provide a user activity heartbeat method which stamps the user record with a timestamp of the last
 // received activity heartbeat.

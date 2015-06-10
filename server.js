@@ -35,7 +35,6 @@ Meteor.methods({
 //
 // periodically purge any stale sessions, removing their login tokens and clearing out the stale heartbeat.
 //
-var self = this;
 Meteor.setInterval(function() {
     var now = new Date(), overdueTimestamp = new Date(now-inactivityTimeout);
     Meteor.users.update({heartbeat: {$lt: overdueTimestamp}},

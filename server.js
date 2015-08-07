@@ -7,7 +7,7 @@
 //
 var staleSessionPurgeInterval = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionPurgeInterval || (1*60*1000); // 1min
 var inactivityTimeout = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionInactivityTimeout || (30*60*1000); // 30mins
-
+var usersRoles = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionUserRoles || null; // null
 //
 // provide a user activity heartbeat method which stamps the user record with a timestamp of the last
 // received activity heartbeat.
@@ -17,6 +17,15 @@ Meteor.methods({
         if (!this.userId) { return; }
         var user = Meteor.users.findOne(this.userId);
         if (user) {
+            if(usersRoles) {
+                for (var x = 0, count = user.roles.length; x < count; x++) {
+                    for (var y = 0, count1 = usersRoles.length; y < count1; y++) {
+                        if (user.roles[x] === usersRoles[y]) {
+                            return
+                        }
+                    }
+                }
+            }
             Meteor.users.update(user._id, {$set: {heartbeat: new Date()}});
         }
     }

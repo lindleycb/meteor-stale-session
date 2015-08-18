@@ -26,7 +26,7 @@ Meteor.startup(function() {
     //
     // detect activity and mark it as detected on any of the following events
     //
-    $('body').on(activityEvents, function() {
+    $(document).on(activityEvents, function() {
        activityDetected = true;
     });
 });

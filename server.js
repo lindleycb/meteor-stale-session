@@ -8,7 +8,7 @@
 //
 var staleSessionPurgeInterval = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionPurgeInterval || (1*60*1000); // 1min
 var inactivityTimeout = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionInactivityTimeout || (30*60*1000); // 30mins
-var forceLogout = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionForceLogout || true;
+var forceLogout = Meteor.settings && Meteor.settings.public && Meteor.settings.public.staleSessionForceLogout;
 
 //
 // provide a user activity heartbeat method which stamps the user record with a timestamp of the last
@@ -28,7 +28,7 @@ Meteor.methods({
 //
 // periodically purge any stale sessions, removing their login tokens and clearing out the stale heartbeat.
 //
-if (forceLogout) {
+if (forceLogout !== false) {
     Meteor.setInterval(function() {
         var now = new Date(), overdueTimestamp = new Date(now-inactivityTimeout);
         Meteor.users.update({heartbeat: {$lt: overdueTimestamp}},

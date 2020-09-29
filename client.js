@@ -29,4 +29,13 @@ Meteor.startup(function() {
     $(document).on(activityEvents, function() {
        activityDetected = true;
     });
+
+    //
+    // ensure a heartbeat is sent when the user first logs in
+    //
+    Tracker.autorun(function(){
+      if(Meteor.userId()){
+        Meteor.call('heartbeat');
+      }
+    });
 });

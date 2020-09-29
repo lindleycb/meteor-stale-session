@@ -32,6 +32,7 @@ Configuration is via `Meteor.settings.public`.
 - `staleSessionPurgeInterval` - interval (in ms) at which stale sessions are purged i.e. found and forcibly logged out - default 1 minute.
 - `staleSessionHeartbeatInterval` - interval (in ms) at which activity heartbeats are sent up to the server - default every 3 minutes.
 - `staleSessionActivityEvents` - the jquery events which are considered indicator of activity e.g. in an on() call - default `mousemove click keydown`
+- `staleSessionForceLogout` - whether or not we want to force log out and purge state sessions
 
 You can set these variables in `config/settings.json` and then launch Meteor with `meteor --settings config/settings.json`.
 

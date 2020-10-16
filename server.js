@@ -17,7 +17,9 @@ Meteor.methods({
         if (!this.userId) { return; }
         var user = Meteor.users.findOne(this.userId);
         if (user) {
-            Meteor.users.update(user._id, {$set: {heartbeat: new Date()}});
+            let now = new Date();
+console.log(`user ${user.username}: hearbeat set to ${now}`);
+            Meteor.users.update(user._id, {$set: {heartbeat: now}});
         }
     }
 });
@@ -28,6 +30,9 @@ Meteor.methods({
 //
 Meteor.setInterval(function() {
     var now = new Date(), overdueTimestamp = new Date(now-inactivityTimeout);
+    Meteor.users.find({heartbeat: {$lt: overdueTimestamp}}).forEach((user)=> {
+        console.log(`user ${user.username} heartbeat overdue - logging out (was ${user.heartbeat}, needed to be after ${overdueTimestamp}`);
+    });
     Meteor.users.update({heartbeat: {$lt: overdueTimestamp}},
                         {$set: {'services.resume.loginTokens': []},
                          $unset: {heartbeat:1}},
